@@ -7,7 +7,7 @@ from discord.ext import commands
 BOT_VERSION = open('version').read()
 
 class FetchIP(commands.Cog):
-    print('★ Loaded cog: Fetch Vulcan IP')
+    print('★ Loaded cog: Fetch Machine IP')
     def __init__(self, bot):
         self.bot = bot
 
@@ -16,7 +16,7 @@ class FetchIP(commands.Cog):
         self,
         ctx
     ):
-        """Check Vulcan's current IP address (IPv4 & IPv6)"""
+        """Check the IP address of the machine the bot is running on (IPv4 & IPv6)"""
         requestTime = datetime.datetime.now()
         print(f'[{requestTime}] [IP Check] Requested by {ctx.author} (ID: {ctx.author.id})')
 
@@ -25,7 +25,7 @@ class FetchIP(commands.Cog):
             ipv6 = requests.get('https://icanhazip.com/').text.strip()
 
             embed = discord.Embed(
-                title=f':globe_with_meridians: Current IP Addresses for __Vulcan__',
+                title=f':globe_with_meridians: Current IP Addresses for the machine the bot is running on',
                 description=f'IPv4 fetched with AWS, IPv6 fetched with icanhazip.',
                 color=discord.Color.blurple(),
             )
