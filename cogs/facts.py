@@ -20,7 +20,7 @@ class Facts(commands.Cog):
     ):
         """Displays a fact about whatever Angry feels like today."""
         requestTime = datetime.datetime.now()
-        print(f'[{requestTime}] [Facts] Requested by {ctx.author} (ID: {ctx.author.id})')
+        print(f'[{requestTime}] [Facts] Requested by {ctx.author.display_name} (ID: {ctx.author.id})')
 
         try:
             if ctx.author.id != 304054669372817419:
@@ -34,7 +34,7 @@ class Facts(commands.Cog):
 
                 now = datetime.datetime.now()
                 rtime = now.strftime("%B %d, %Y, %H:%M")
-                embed.set_footer(text=f"Requested by {ctx.author} » {rtime} | {BOT_VERSION}")
+                embed.set_footer(text=f"Requested by {ctx.author.display_name} » {rtime} | {BOT_VERSION}")
 
                 await ctx.respond('<@&1119870382732759120>', embed=embed)
         except Exception as e:

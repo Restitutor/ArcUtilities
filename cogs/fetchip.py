@@ -18,7 +18,7 @@ class FetchIP(commands.Cog):
     ):
         """Check the IP address of the machine the bot is running on (IPv4 & IPv6)"""
         requestTime = datetime.datetime.now()
-        print(f'[{requestTime}] [IP Check] Requested by {ctx.author} (ID: {ctx.author.id})')
+        print(f'[{requestTime}] [IP Check] Requested by {ctx.author.display_name} (ID: {ctx.author.id})')
 
         try:
             ipv4 = requests.get('https://checkip.amazonaws.com/').text.strip()
@@ -41,7 +41,7 @@ class FetchIP(commands.Cog):
             
             now = datetime.datetime.now()
             rtime = now.strftime("%B %d, %Y, %H:%M")
-            embed.set_footer(text=f"Requested by {ctx.author} » {rtime} | {BOT_VERSION}")
+            embed.set_footer(text=f"Requested by {ctx.author.display_name} » {rtime} | {BOT_VERSION}")
 
             await ctx.respond(embed=embed)
         except Exception as e:

@@ -22,7 +22,7 @@ class AirQuality(commands.Cog):
     ):
         """Check air quality for your location. Data provided through the World Air Quality Index project."""
         requestTime = datetime.datetime.now()
-        print(f'[{requestTime}] [Air Quality] Requested by {ctx.author} (ID: {ctx.author.id})')
+        print(f'[{requestTime}] [Air Quality] Requested by {ctx.author.display_name} (ID: {ctx.author.id})')
 
         try:
             api_data = requests.get(f"https://api.waqi.info/feed/{city}?token={api_key}").json()
@@ -94,7 +94,7 @@ class AirQuality(commands.Cog):
 
                 now = datetime.datetime.now()
                 rtime = now.strftime("%B %d, %Y, %H:%M")
-                embed.set_footer(text=f"Requested by {ctx.author} » {rtime} | {BOT_VERSION}")
+                embed.set_footer(text=f"Requested by {ctx.author.display_name} » {rtime} | {BOT_VERSION}")
 
                 await ctx.respond(embed=embed)
         except Exception as e:
