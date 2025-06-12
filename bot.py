@@ -14,7 +14,11 @@ cogs_list = [
 intents = discord.Intents.default()
 discord.Intents.message_reactions = True
 
-bot = discord.Bot()
+bot = discord.Bot(
+    allowed_mentions=discord.AllowedMentions(
+        everyone=False, users=False, roles=False, replied_user=True
+    ),
+)
 
 for cog in cogs_list:
     bot.load_extension(f"cogs.{cog}")
